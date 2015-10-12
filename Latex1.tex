@@ -1,0 +1,95 @@
+\documentclass[oneside, final, 12pt]{extreport}
+\usepackage[cp1251]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{vmargin}
+\setpapersize{A4}
+\setmarginsrb{1.5cm}{1cm}{1.5cm}{1cm}{0pt}{0mm}{0pt}{13mm}
+
+\usepackage{indentfirst}
+\sloppy
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amscd}
+
+% ********* ********* ********* *********
+%% Глава
+\newcommand\Chapter[1]{
+	\refstepcounter{chapter}
+	\chapter*{
+		\begin{huge}
+			\textbf{\arabic{chapter}.}
+		\end{huge}%
+		\raggedright #1
+	}
+	\addcontentsline{toc}{chapter}{\arabic{chapter}. #1}
+}
+%% Подглавы
+\newcommand\Section[1]{
+	\refstepcounter{section}
+	\section*{\raggedright
+	\arabic{chapter}.\arabic{section}. #1}
+	\addcontentsline{toc}{section}{%
+		\arabic{chapter}.\arabic{section}. #1}
+}
+%% Математические формулировки (теоремы, определения, замечания, утверждения, доказательство)
+\renewcommand{\proofname}{Доказательство}
+\newtheorem{theorema}{Теорема}
+\newtheorem{utver}{Утверждение}
+\newtheorem{vivod}{Вывод}
+\theoremstyle{definition}
+\newtheorem{defin}{Определение}
+\theoremstyle{remark}
+\newtheorem{remarka}{Замечание}
+%% Знаки больше равно, меньше равно
+\renewcommand{\le}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+%% Пространство вещественных чисел, пространство комплексных чисел
+\newcommand{\RR}{{\mathbb R}} 
+\newcommand{\CC}{{\mathbb C}} 
+%% Всякие упрощения записей символов и отдельных букв
+\newcommand{\eps}{\varepsilon}
+\renewcommand{\l}{\left}
+\renewcommand{\r}{\right}
+\newcommand{\Lra}{\Leftrightarrow}
+\newcommand{\LLra}{\Longleftrightarrow}
+\newcommand{\prtl}{\partial}
+% ********* ********* ********* *********
+
+\begin{document}
+% ********* Титульный лист *********
+\thispagestyle{empty}
+\centerline{\scshape Московский государственный университет имени М.~В.~Ломоносова}
+\centerline{\scshape Факультет вычислительной математики и информатики}
+\centerline{\scshape Кафедра системного анализа}
+\vfill
+\begin{center}
+	{\LARGE Отчёт по практикуму}\\
+	\vspace{0.5cm}
+	{\LARGE \bfseries <<Динамическое программирование и процессы управления. Ellipsoidal Toolbox>>}
+	\vspace{3cm}
+\end{center}
+\begin{flushright}
+	\large
+	\textit{Студент 415 группы}\\
+	Д.\,Т.~Солтанова\\
+	\vspace{5mm}
+	\textit{Преподаватели}\\
+	ассистент Ю.\,Ю.~Минаева
+\end{flushright}
+\vfill
+\centerline{Москва, 2015}
+\clearpage
+% ********* Оглавление *********
+\tableofcontents
+\Chapter{Задание №1}
+\section{Постановка задачи}
+Дана электрическая система с двумя степенями свободы, совершающая затухающие колебания:
+\par
+Электрический контур состоит из трех конденсаторов емкости \(C_1, C_2, C\) и двух катушек индуктивности \(L_1, L_2\). Управлением \(U\) можно подавать дополнительное напряжение к участку цепи между второй катушкой индуктивности и вторым конденсатором. В начальный момент на конденсаторах с емкостями \(C_1\) и \(C_2\) были падения напряжения \(U_1\) и \(U_2\), а токи через катушки были равны \(I_1, I_2\).\\
+Для рассмотрения затухающих колебаний на нижние (на рисунке) горизонтальные участки цепи добавить два сопротивления \(R\), последовательно с конденсаторами \(C_1\) и \(C_2\). \\
+Даны следующие параметры: \(C, C_1, C_2, L_1, L_2, U_1, U_2, I_1, I_2, R, |U|\le U\). \par
+Исследовать движение системы без управления (найти собственные значения, построить фазовые траектории). Подобрать параметры для более наглядного графического представления движения системы. При помощи Ellipsoidal Toolbox выяснить, за какое минимальное время можно успокоить систему. Привести в состояние, когда падение напряжения на конденсаторах равны нулю, и токи через катушки индуктивности равны нулю. В этом случае принять, что сопротивления равны нулю.
+\end{document}
